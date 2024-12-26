@@ -1,0 +1,59 @@
+/* reactiveform.component.css */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  margin-top: 5px;
+  width: 100%;
+  max-width: 400px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background-color: #cccccc;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

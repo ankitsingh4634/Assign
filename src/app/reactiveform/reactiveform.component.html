@@ -1,0 +1,66 @@
+<!-- reactiveform.component.html -->
+<div class="form-container">
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="fname">First Name:</label>
+      <input id="fname" formControlName="fname" type="text" />
+      <div *ngIf="regForm.get('fname')?.invalid && regForm.get('fname')?.touched">
+        <small class="error" *ngIf="regForm.get('fname')?.hasError('required')">First name is required.</small>
+        <small class="error" *ngIf="regForm.get('fname')?.hasError('minlength')">First name must be at least 3 characters long.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="regForm.get('email')?.invalid && regForm.get('email')?.touched">
+        <small class="error" *ngIf="regForm.get('email')?.hasError('required')">Email is required.</small>
+        <small class="error" *ngIf="regForm.get('email')?.hasError('email')">Please enter a valid email.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="pass">Password:</label>
+      <input id="pass" formControlName="pass" type="password" />
+      <div *ngIf="regForm.get('pass')?.invalid && regForm.get('pass')?.touched">
+        <small class="error" *ngIf="regForm.get('pass')?.hasError('required')">Password is required.</small>
+        <small class="error" *ngIf="regForm.get('pass')?.hasError('minlength')">Password must be at least 8 characters long.</small>
+        <small class="error" *ngIf="regForm.get('pass')?.hasError('pattern')">Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="confirmPass">Confirm Password:</label>
+      <input id="confirmPass" formControlName="confirmPass" type="password" />
+      <div *ngIf="regForm.get('confirmPass')?.invalid && regForm.get('confirmPass')?.touched">
+        <small class="error" *ngIf="regForm.get('confirmPass')?.hasError('required')">Confirm Password is required.</small>
+        <small class="error" *ngIf="regForm.get('confirmPass')?.hasError('mismatch')">Passwords do not match.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input id="phone" formControlName="phone" type="text" />
+      <div *ngIf="regForm.get('phone')?.invalid && regForm.get('phone')?.touched">
+        <small class="error" *ngIf="regForm.get('phone')?.hasError('pattern')">Phone must be a 10-digit number.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input id="dob" formControlName="dob" type="date" />
+      <div *ngIf="regForm.get('dob')?.invalid && regForm.get('dob')?.touched">
+        <small class="error" *ngIf="regForm.get('dob')?.hasError('required')">Date of Birth is required.</small>
+        <small class="error" *ngIf="regForm.get('dob')?.hasError('underage')">You must be at least 18 years old.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="regForm.invalid">Submit</button>
+    <button type="button" (click)="onReset()">Reset</button>
+  </form>
+
+  <div *ngIf="formData">
+    <h3>Form Data:</h3>
+    <pre>{{ formData | json }}</pre>
+  </div>
+</div>
